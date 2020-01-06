@@ -21,18 +21,18 @@
         <!--Highscore Link-->
         <a href="highscores.html">View Highscores</a>
         <!--Timer Countdown-->
-        <div id="timer"></div>
+        <div id="timer"></div>Time: <span id="countdown"></span></div>
     </header>
-    <section id="landing">
+    <section id="landing" class="visible">
         <h1>Coding Quiz Challenge</h1>
         <p>Give the following code quize challenge a shot by selecting the answer that best fits the question before the timer runs out!</p>
-        <button id="start" type="button"></button>
+        <button id="start" type="button">Start Quiz</button>
     </section>
-    <section id="quiz">
+    <section id="quiz" class="invisible">
         <h2 id="question"></h2>
-        <ul id="options"></ul>
+        <ol id="options"></ol>
     </section>
-    <section id="final">
+    <section id="final" class="invisible">
         <h2>All Done!</h2>
         <p id="final-score"></p>
         <form id="save-score" method="POST" action="highscores.html">
