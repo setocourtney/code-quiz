@@ -46,7 +46,7 @@ var questions = [
     },
     {
         title: "What does error 404 or Not Found error while accessing a URL mean",
-        choices: ["The server could not find the requested URL", "Requested HTML file is not available", "The requested HTML file does not have sufficient permissions"],
+        choices: ["The server could not find the requested URL", "Requested HTML file is not available", "Runtime Error loading the page", "The requested HTML file does not have sufficient permissions"],
         answer: "The server could not find the requested URL"
     },
     //css questions

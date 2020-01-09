@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery.js"></script>
 
     <script src="questions.js"></script>
+    <script src="view-scores.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
@@ -23,21 +24,19 @@
         <!--Timer Countdown-->
         <div id="timer"></div>Time: <span id="countdown"></span></div>
     </header>
-    <section id="landing" class="visible">
+    <section id="landing" class="invisible">
         <h1>Coding Quiz Challenge</h1>
         <p>Give the following code quize challenge a shot by selecting the answer that best fits the question before the timer runs out!</p>
         <button id="start" type="button">Start Quiz</button>
     </section>
-    <section id="quiz" class="invisible">
-        <h2 id="question"></h2>
-        <ol id="options"></ol>
+    <section id="quiz">
     </section>
-    <section id="final" class="invisible">
+    <section id="game-over">
         <h2>All Done!</h2>
-        <p id="final-score"></p>
-        <form id="save-score" method="POST" action="highscores.html">
-            <label for="initials">Enter your initials: </label>
-            <input type="text" name="user-initials" id="initials"/>
+        <p>Your final score is <span id="final-score"></span></p>
+        <form id="save-score" method="POST">
+            <label for="user-initials">Enter your initials: </label>
+            <input type="text" name="user-initials" id="user-initials"/>
             <input type="submit" value="Submit Score"/>
         </form>
     </section>
