@@ -3,11 +3,10 @@
 //loop through scores and create list items
 
 $(document).ready(function() {
-        
     var currentScores = [];
 
     getSavedScores();
-    //renderScores();
+    renderScores();
 
     function getSavedScores() {
         var savedScores = JSON.parse(localStorage.getItem("highscores"));
@@ -16,7 +15,11 @@ $(document).ready(function() {
         }
     };
 
-    function storeScores() {
-        localStorage.setItem("highscores", JSON.stringify(savedScores));
+    function renderScores() {
+        console.log(currentScores);
+        // for (i = 0; i < currentScores.length; i++) {
+        //     var score = $("<div>");
+        // }
     }
+
 });

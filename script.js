@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var landing = $("#landing");
     var quiz = $("#quiz");
-    var gameOver = $("#game-over"); 
+    var gameOver = $("#game-over");
 
     //change interval to increase or decrease difficulty
     var interval = 15;
@@ -12,12 +12,9 @@ $(document).ready(function() {
     var choices = "";
     var answer = "";
     var timerInterval;
+    var finalScore;
 
-    if(landing.hasClass("invisible")) {
-        landing.removeClass("invisible");
-    };
-    quiz.addClass("invisible");
-    gameOver.addClass("invisible");
+    resetVars();
 
     function setTime() {
         timerInterval = setInterval(function() {
@@ -65,10 +62,10 @@ $(document).ready(function() {
 
     function endGame() {
         clearInterval(timerInterval);
+        finalScore = timeLeft;
         quiz.addClass("invisible");
         gameOver.removeClass("invisible");
-        $("#final-score").text(timeLeft);
-        resetVars();
+        $("#final-score").text(finalScore);
     };
 
     function resetVars() {
@@ -78,7 +75,12 @@ $(document).ready(function() {
         title = "";
         choices = "";
         answer = "";
+        finalScore = 0;
         isGameOver = false;
+        landing.removeClass("invisible");
+        quiz.addClass("invisible");
+        gameOver.addClass("invisible");
+    
     }
 
     $("#start").click(function(e) {
@@ -112,27 +114,19 @@ $(document).ready(function() {
         nextQuestion();
     });
 
-    $("#save-score").on("submit", function(e) {
+    $("#save-score").on("click", function(e) {
         e.preventDefault();
-        var userInitials = $("#user-intials").val();
-        console.log(userInitials);
-        if(userInitials === "") {
-            return;
-        } else {
+        var userInitials = document.querySelector("#user-initials").value;
+        if(userInitials !== "") {
             var newScore = {
                 initials: userInitials,
                 score: $("#final-score").text()
             };
-            console.log(newScore);
             var savedScores = JSON.parse(localStorage.getItem("highscores"));
             savedScores.push(newScore);
             localStorage.setItem("highscores", JSON.stringify(savedScores));
-            //window.location.href = "highscores.html";
+            window.location.href = "highscores.html";
         }
     });
 });
 
-//seperate pages
-//make global variables
-//fix save score
-//write clear scores

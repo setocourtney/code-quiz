@@ -61,4 +61,9 @@ var questions = [
         choices: ["display()", "alert()", "getOutput()", "prompt()"],
         answer: "prompt()"
     },
+    {
+        title: "What is a single-threaded language?",
+        choices: ["Runs from top to bottom", "", "", ""],
+        answer: "Markup Language"
+    },
 ]
