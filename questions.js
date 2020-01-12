@@ -34,7 +34,7 @@ var questions = [
         answer: "img"
     },
     {
-        title: "Tags and test that are not directly displayed on the page are written in _____ section.",
+        title: "Tags and tests that are not directly displayed on the page are written in _____ section.",
         choices: ["<head>", "<title>", "<document>", "<html>"],
         answer: "<head>"
     },
@@ -53,7 +53,7 @@ var questions = [
     {
         title: "If you want to align text to the right side of an block element in a cascading style sheet (CSS) then which of the following property would you use?",
         choices: ["Right align", "Justify", "Left align", "Text align"],
-        answer: "Mozilla"
+        answer: "Right align"
     },
     //javascript questions
     {
@@ -62,8 +62,8 @@ var questions = [
         answer: "prompt()"
     },
     {
-        title: "What is a single-threaded language?",
-        choices: ["Runs from top to bottom", "", "", ""],
-        answer: "Markup Language"
+        title: "What is a single-threaded programming language?",
+        choices: ["Multiple functions can be run at one time", "Code is exectued one instruction at a time", "Code can be written one line at a time", "Files only contain one line of code"],
+        answer: "Code is exectued one instruction at a time"
     },
 ]

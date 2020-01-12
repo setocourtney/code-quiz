@@ -2,16 +2,21 @@ $(document).ready(function() {
     var landing = $("#landing");
     var quiz = $("#quiz");
     var gameOver = $("#game-over");
+    var responseText = $("#response-text");
 
     //change interval to increase or decrease difficulty
     var interval = 15;
-    var timeLeft = questions.length * interval;
-    var index = 0;
-    var userAnswer = "";
-    var title = "";
-    var choices = "";
-    var answer = "";
+    //time remaining in function, initialized as number of questions * interval
+    var timeLeft;
+    //index of current question
+    var index;
+    //answer of current question
+    var answer;
+    //current question status - wrong or correct
+    var isCorrect;
+    //timer function
     var timerInterval;
+    var responseCountdown;
     var finalScore;
 
     resetVars();
@@ -25,7 +30,7 @@ $(document).ready(function() {
             endGame();
             }
         }, 1000);
-        }
+    };
 
     function nextQuestion() {
         //test if end of questions, end game
@@ -33,23 +38,24 @@ $(document).ready(function() {
             endGame();
         } else {
 
-        //clear #quiz
-        quiz.empty();
+        //clear #question-box
+        var questionBox = $("#question-box");
+        questionBox.empty();
 
         //get next question info
-        title = questions[index].title;
-        choices = questions[index].choices;
+        var title = questions[index].title;
+        var choices = questions[index].choices;
         answer = questions[index].answer;
         
         //display question
         var currentQuestion = $("<h2>");
         currentQuestion.text(title);
-        quiz.append(currentQuestion);
+        questionBox.append(currentQuestion);
 
         //display choices
         var currentChoices = $("<ol>");
         currentChoices.addClass("choices-list");
-        quiz.append(currentChoices);
+        questionBox.append(currentChoices);
         for (i = 0; i < choices.length; i++) {
             var choiceButton = $("<li>");
             choiceButton.attr("id", choices[i]);
@@ -60,6 +66,7 @@ $(document).ready(function() {
         };
     };
 
+    //reset timer, save final score
     function endGame() {
         clearInterval(timerInterval);
         finalScore = timeLeft;
@@ -70,19 +77,18 @@ $(document).ready(function() {
 
     function resetVars() {
         timeLeft = questions.length * interval;
+        timerInterval = null;
+        responseCountdown = null;
         index = 0;
-        userAnswer = "";
-        title = "";
-        choices = "";
         answer = "";
+        isCorrect = false;
         finalScore = 0;
-        isGameOver = false;
         landing.removeClass("invisible");
         quiz.addClass("invisible");
         gameOver.addClass("invisible");
-    
-    }
+    };
 
+    //start quiz, initialize timer, view next question
     $("#start").click(function(e) {
         landing.addClass("invisible");
         quiz.removeClass("invisible");
@@ -92,28 +98,39 @@ $(document).ready(function() {
 
     //get user response and check if matches answer, decrease timer by interval
     $("#quiz").on("click", function(e) {
-        userAnswer = e.target.id;
-        console.log(userAnswer);
-        var response = $("<div>")
-        response.addClass("response")
+        e.preventDefault();
+        var userAnswer = e.target.id;
         if(userAnswer !== answer) {;
+            isCorrect = false;
             if(timeLeft > interval) {
                 timeLeft -= interval;
             } else {
                 timeLeft = 0;
                 $("#countdown").text(timeLeft);
                 endGame();
-            }
-            response.text("Wrong!");    
+            } 
         } else {
-            response.text("Correct!");
+            isCorrect = true;
             index++;
         }
-        $("#quiz").append(response);
-        console.log(timeLeft);
+        displayResponse();
         nextQuestion();
     });
 
+    //displays whether question was wrong or correct for an interval of 5 seconds
+    function displayResponse() {
+        clearTimeout(responseCountdown);
+        if(isCorrect) {
+            responseText.text("Correct!");
+        } else {
+            responseText.text("Wrong!");
+        }
+        responseCountdown = setTimeout(function() {
+            responseText.empty();
+        }, 1000);
+    };
+
+    //saves intials and score as highscores object in local storage
     $("#save-score").on("click", function(e) {
         e.preventDefault();
         var userInitials = document.querySelector("#user-initials").value;
@@ -126,7 +143,7 @@ $(document).ready(function() {
             savedScores.push(newScore);
             localStorage.setItem("highscores", JSON.stringify(savedScores));
             window.location.href = "highscores.html";
-        }
+        };
     });
 });
 
