@@ -8,17 +8,23 @@
 
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="view-scores.js"></script>
 </head>
 <body>
-    <section>
-        <h1>Highscores</h1>
-        <ol id="scores"></ol>
-        <button onclick="window.location.href = 'index.html'" type="button">Play Again</button>
-        <button id="clear-scores" type="button">Clear Scores</button>
-    </section>
+    <div class="container">
+        <header class="row header fixed-top"></header>
+        <section class="row main">
+            <div class="col">
+                <h1 class="main-header">Highscores</h1>
+                <ol id="scores"></ol>
+                <button onclick="window.location.href = 'index.html'" type="button" class="btn btn-success">Play Again</button>
+                <button id="clear-scores" type="button" class="btn btn-warning">Clear Scores</button>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

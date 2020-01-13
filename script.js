@@ -1,3 +1,10 @@
+/* script for code-quiz application:
+    - initializes quiz with timer
+    - displays questions and choices from questions.js
+    - final score is set to time remaining or 0 if time runs out before all questions are answered
+    - final score and user provided initials can be saved to local storage
+*/
+
 $(document).ready(function() {
     var landing = $("#landing");
     var quiz = $("#quiz");
@@ -14,13 +21,16 @@ $(document).ready(function() {
     var answer;
     //current question status - wrong or correct
     var isCorrect;
-    //timer function
+    //quiz timer initial interval, intialized as interval * number of questions
     var timerInterval;
+    //countdown for displaying current question satus
     var responseCountdown;
+    //final score is time remaining at the end of game, 0 if all questions were not completed
     var finalScore;
 
     resetVars();
 
+    //timer for quiz
     function setTime() {
         timerInterval = setInterval(function() {
             timeLeft--;
@@ -32,6 +42,7 @@ $(document).ready(function() {
         }, 1000);
     };
 
+    //display quiz questions and choices
     function nextQuestion() {
         //test if end of questions, end game
         if(index >= questions.length) {
@@ -49,6 +60,7 @@ $(document).ready(function() {
         
         //display question
         var currentQuestion = $("<h2>");
+        currentQuestion.addClass("sub-header");
         currentQuestion.text(title);
         questionBox.append(currentQuestion);
 
@@ -66,15 +78,16 @@ $(document).ready(function() {
         };
     };
 
-    //reset timer, save final score
+    //clear quiz timer and display final score
     function endGame() {
         clearInterval(timerInterval);
         finalScore = timeLeft;
-        quiz.addClass("invisible");
-        gameOver.removeClass("invisible");
+        quiz.css("display", "none");
+        gameOver.css("display","inline-block");
         $("#final-score").text(finalScore);
     };
 
+    //initialize variables
     function resetVars() {
         timeLeft = questions.length * interval;
         timerInterval = null;
@@ -83,23 +96,25 @@ $(document).ready(function() {
         answer = "";
         isCorrect = false;
         finalScore = 0;
-        landing.removeClass("invisible");
-        quiz.addClass("invisible");
-        gameOver.addClass("invisible");
+        landing.css("display", "inline-block");
+        quiz.css("display", "none");
+        gameOver.css("display", "none");
     };
 
     //start quiz, initialize timer, view next question
     $("#start").click(function(e) {
-        landing.addClass("invisible");
-        quiz.removeClass("invisible");
+        landing.css("display", "none");
+        quiz.css("display", "inline-block");
         setTime();
         nextQuestion();        
     });
 
-    //get user response and check if matches answer, decrease timer by interval
+    //get user response and check if matches answer
     $("#quiz").on("click", function(e) {
         e.preventDefault();
         var userAnswer = e.target.id;
+        
+        //if answer is wrong, decrease timer by interval or endgame if time is up
         if(userAnswer !== answer) {;
             isCorrect = false;
             if(timeLeft > interval) {
@@ -117,7 +132,7 @@ $(document).ready(function() {
         nextQuestion();
     });
 
-    //displays whether question was wrong or correct for an interval of 5 seconds
+    //displays whether question was wrong or correct for 5 seconds
     function displayResponse() {
         clearTimeout(responseCountdown);
         if(isCorrect) {

@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code Quiz</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Bootstrap File -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <!--Mulitiple choice quiz application with timed questions about coding that allows user to save and clear highscores-->
+        <title>Code Quiz</title>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Bootstrap File -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
 
-    <script src="questions.js"></script>
-    <script src="view-scores.js"></script>
-    <script src="script.js"></script>
-</head>
-<body>
-    <header>
-        <href >
-        <!--Highscore Link-->
-        <a href="highscores.html">View Highscores</a>
-        <!--Timer Countdown-->
-        <div id="timer"></div>Time: <span id="countdown"></span></div>
-    </header>
-    <section id="landing">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Give the following code quize challenge a shot by selecting the answer that best fits the question before the timer runs out!</p>
-        <button id="start" type="button">Start Quiz</button>
-    </section>
-    <section id="quiz">
-        <div id="question-box"></div>
-        <div id="response-text"></div>
-    </section>
-    <section id="game-over">
-        <h2>All Done!</h2>
-        <p>Your final score is <span id="final-score"></span></p>
-        <form id="score-form" method="POST">
-            <label for="user-initials">Enter your initials: </label>
-            <input type="text" name="user-initials" id="user-initials"/>
-            <input type="submit" id="save-score" value="Submit Score"/>
-        </form>
-    </section>
-</body>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+
+        <script src="questions.js"></script>
+        <script src="view-scores.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header class="row header fixed-top">
+                <!--Highscore Link-->
+                <a href="highscores.html" class="col-xs mr-auto">View Highscores</a>
+                <!--Timer Countdown-->
+                <div id="timer"class="col-xs col-md-auto align-self-end">Time: <span id="countdown">0</span></div>
+            </header>
+                <!--Quiz Instructions and Initiate Quiz-->
+            <section id="landing" class="row main">
+                <div class="col">
+                    <h1 class="main-header">Coding Quiz Challenge</h1>
+                    <p class="text">Give the following code quize challenge a shot by selecting the answer that best fits the question before the timer runs out!</p>
+                    <button id="start" type="button" class="btn btn-success">Start Quiz</button>
+                </div>
+            </section>
+                <!--Questions and choices after quiz is initiated-->
+            <section id="quiz" class="row main">
+                <div id="question-box" class="col"></div>
+                <div id="response-text"class="col"></div>
+            </section>
+                <!--Final score and form for user initials-->
+            <section id="game-over" class="row main">
+                <div class="col">
+                    <h2 class="sub-header">Game Over</h2>
+                    <p class="text">Your final score is <span id="final-score"></span>!</p>
+                    <form id="score-form" method="POST">
+                        <div class="initials-text">Enter initials to save score </div>
+                        <input type="text" name="user-initials" id="user-initials"/>
+                        <input type="submit" id="save-score" value="Submit Score" class="btn btn-primary"/>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </body>
 </html>

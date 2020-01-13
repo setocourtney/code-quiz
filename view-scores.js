@@ -1,7 +1,3 @@
-//pull object from local storage
-//use JSON to parse scores
-//loop through scores and create list items
-
 $(document).ready(function() {
     var currentScores = [];
 
@@ -21,6 +17,7 @@ $(document).ready(function() {
         for (i = 0; i < currentScores.length; i++) {
             var scoreli = $("<li>");
             var scoreObject = currentScores[i];
+            scoreli.addClass("score-li")
             scoreli.text(scoreObject.initials + "-" + scoreObject.score);
             $("#scores").append(scoreli);
         };
