@@ -16,6 +16,7 @@ header {
 a, #timer{
     background-color: #7f8c8d;
     color: #ffffff;
+    font-weight: bold;
     padding: 5px;
     margin: 5px 10px;
     border-radius: 8px;

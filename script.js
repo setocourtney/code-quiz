@@ -156,7 +156,7 @@ $(document).ready(function() {
             };
             var savedScores = JSON.parse(localStorage.getItem("highscores"));
             if (savedScores === null) {
-                savedSCores = [];
+                savedScores = [];
             }
             savedScores.push(newScore);
             localStorage.setItem("highscores", JSON.stringify(savedScores));
