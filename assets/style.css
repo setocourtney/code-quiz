@@ -1,0 +1,66 @@
+/* stylesheet for code-quiz and highscores*/
+
+/* Override bootstrap css using classes and id's*/
+
+
+.main {
+    margin: 100px;
+    padding: 20px;
+}
+
+header {
+    background-color: #f39c12;
+    padding: 10px;
+}
+
+a, #timer{
+    background-color: #7f8c8d;
+    color: #ffffff;
+    padding: 5px;
+    margin: 5px 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#countdown {
+    color: #e74c3c;
+    margin: 0px 10px;
+    font-weight: bold;
+}
+
+.main-header, .sub-header {
+    color: #d35400;
+    border-bottom: 2px solid #7f8c8d;
+}
+
+.text, .main-header, #question-box, .sub-header, #response-text, .choices-list, .initials-text  {
+    padding: 10px;
+    margin: 5px;
+}
+.choice-li, .score-li {
+    padding: 5px;
+    margin: 5px;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    border-radius: 6px;
+}
+
+#response-text {
+    color: #7f8c8d;
+    border-top: 1px dashed #2c3e50;
+    font-weight: bold;
+    text-align: center;
+}
+
+#user-initials {
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+
+}
+.initials-text {
+    text-align: center;
+    color: #7f8c8d;
+    border-top: 1px dashed #2c3e50;
+}
