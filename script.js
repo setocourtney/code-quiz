@@ -155,6 +155,9 @@ $(document).ready(function() {
                 score: $("#final-score").text()
             };
             var savedScores = JSON.parse(localStorage.getItem("highscores"));
+            if (savedScores === null) {
+                savedSCores = [];
+            }
             savedScores.push(newScore);
             localStorage.setItem("highscores", JSON.stringify(savedScores));
             window.location.href = "highscores.html";
