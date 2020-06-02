@@ -30,8 +30,8 @@ Timed quiz application with mulitple choice questions about coding.
 
 ### FrontEnd
 
-* jQuery
-* Bootstrap CSS Framework
+* [jQuery](https://jquery.com/)
+* [Bootstrap](https://getbootstrap.com/)
 * JavaScript
 
 
