@@ -4,11 +4,15 @@ Deployed: https://setocourtney.github.io/code-quiz/
 
 Timed quiz application with mulitple choice questions about coding.
 
+
+
 ## User Story
 
 > AS AN aspiring developer <br />
 > I WANT to test my programming knowledge <br />
 > SO THAT I can find areas for improvement
+
+
 
 ## Functionality
 
@@ -20,6 +24,8 @@ Timed quiz application with mulitple choice questions about coding.
 
   * When time runs out and/or all questions are answered, the user is presented with their final score and asked to enter their initials. Their final score and initials are then stored in `localStorage`.
 
+
+
 ## Technologies
 
 ### FrontEnd
@@ -27,6 +33,8 @@ Timed quiz application with mulitple choice questions about coding.
 * jQuery
 * Bootstrap CSS Framework
 * JavaScript
+
+
 
 ## Directory
 
@@ -36,6 +44,7 @@ Timed quiz application with mulitple choice questions about coding.
     * view-score.js - javascript to display saved scores
     * questions.js - array of question objects with title, choices, and answer
     * style.css - css supplement to bootstrap
+
 
 
 ## License
